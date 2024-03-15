@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Building } from '../building';
 
 @Component({
   selector: 'app-building-button',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './building-button.component.scss'
 })
 export class BuildingButtonComponent {
+
+
+ @Input() building: Building;
+
+
+ constructor(){
+  this.building = {name:'', price: 0, owned: 0};
+ }
 
 }
