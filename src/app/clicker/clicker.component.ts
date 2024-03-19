@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-clicker',
@@ -10,9 +10,11 @@ import { Component, Input } from '@angular/core';
 export class ClickerComponent {
 
   @Input() gold : number = 0;
+  @Output() onUpdateGold = new EventEmitter<number>();
 
-  public clickChest()
+
+  clickChest()
   {
-    this.gold+=1;
+    this.onUpdateGold.emit(this.gold+1);
   }
 }

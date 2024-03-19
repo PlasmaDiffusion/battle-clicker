@@ -1,3 +1,8 @@
 <p>Hire Adventurers!</p>
-<li *ngFor="let building of buildings">
-    <app-building-button [building]="building" [gold]="this.gold">
+<li *ngFor="let building of buildings; index as i">
+  <app-building-button
+    [building]="building"
+    [gold]="this.gold"
+    (onBuy)="this.buyBuilding(building, i)"
+  />
+</li>

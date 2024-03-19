@@ -9,8 +9,8 @@ import { ClickerComponent } from '../clicker/clicker.component';
   imports: [RouterOutlet, ClickerComponent, BuildingListComponent],
   template: `
     <div class="game">
-      <app-clicker [gold]="this.gold" />
-      <app-building-list [gold]="this.gold" />
+      <app-clicker [gold]="this.gold" (onUpdateGold)="this.onUpdateGold($event)" />
+      <app-building-list [gold]="this.gold" (onUpdateGold)="this.onUpdateGold($event)"/>
     </div>
   `,
   styleUrl: './game.component.scss',
@@ -21,6 +21,11 @@ export class GameComponent {
 
   constructor() {
     this.gold = 0;
+  }
+
+  onUpdateGold($amount:number)
+  {
+    this.gold = $amount;
   }
 
 }

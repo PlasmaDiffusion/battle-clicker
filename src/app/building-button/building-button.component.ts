@@ -7,28 +7,22 @@ import { ClickerComponent } from '../clicker/clicker.component';
   standalone: true,
   imports: [ClickerComponent],
   templateUrl: './building-button.component.html',
-  styleUrl: './building-button.component.scss'
+  styleUrl: './building-button.component.scss',
 })
 export class BuildingButtonComponent {
+  @Input() building: Building;
+  @Input() gold: number;
+  @Input() onBuy: (building: Building) => void;
 
+  constructor() {
+    this.building = { name: '', price: 0, owned: 0, goldPerSecond: 0 };
+    this.gold = 0;
+    this.onBuy = (building) => {};
+  }
 
- @Input() building: Building;
- @Input() gold: number;
-
-
- constructor(){
-  this.building = {name:'', price: 0, owned: 0};
-  this.gold = 0;
- }
-
- onClick()
- {
-  //If can buy (TODO: Check gold value from clicker class)
-   
-  //Buy and up the price
-  let price = this.building.price;
-  let owned = ++this.building.owned;
-  this.building.price = Math.round(price * ( 1 + (owned/10))); 
- }
-
+  onClick() {
+    if (this.gold > this.building.price) {
+      this.onBuy(this.building);
+    }
+  }
 }
