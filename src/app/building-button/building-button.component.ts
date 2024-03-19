@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Building } from '../building';
 import { ClickerComponent } from '../clicker/clicker.component';
 
@@ -12,17 +12,19 @@ import { ClickerComponent } from '../clicker/clicker.component';
 export class BuildingButtonComponent {
   @Input() building: Building;
   @Input() gold: number;
-  @Input() onBuy: (building: Building) => void;
+  @Output() onBuy = new EventEmitter<Building>();
 
   constructor() {
     this.building = { name: '', price: 0, owned: 0, goldPerSecond: 0 };
     this.gold = 0;
-    this.onBuy = (building) => {};
+    console.log("sdfds");
   }
 
   onClick() {
+    console.log("clicked", this.building.name);
+    console.log(this.gold, ">", this.building.price);
     if (this.gold > this.building.price) {
-      this.onBuy(this.building);
+      this.onBuy.emit(this.building);
     }
   }
 }

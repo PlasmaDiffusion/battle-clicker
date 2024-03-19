@@ -3,13 +3,15 @@ import { NgFor } from '@angular/common';
 import { Building } from '../building';
 import { BuildingButtonComponent } from '../building-button/building-button.component';
 
+//Hard coded list of buildings here
 const buildings: Building[] = [
-  { name: 'Warrior', owned: 0, price: 20, goldPerSecond: 1 },
+  { name: 'Warrior', owned: 0, price: 10, goldPerSecond: 1 },
   { name: 'Wizard', owned: 0, price: 100, goldPerSecond: 5 },
   { name: 'Cleric', owned: 0, price: 500, goldPerSecond: 10 },
   { name: 'Thief', owned: 0, price: 2500, goldPerSecond: 50 },
 ];
 
+//Stores buildings, renders a list of them, and handles code to buy a building
 @Component({
   selector: 'app-building-list',
   standalone: true,
@@ -28,19 +30,27 @@ export class BuildingListComponent {
   }
 
   //Buy a building and up the price
-  buyBuilding(building: Building, buildingIndex: number) {
-    this.onUpdateGold.emit(this.gold - building.price);
-    buildings[buildingIndex].owned++;
+  buyBuilding(building: Building) {
+    let indexToBuy = 0;
+    this.buildings.forEach((currentBuilding, currentIndex) => {
+      if (building.name === currentBuilding.name) {
+        indexToBuy = currentIndex;
+      }
+    });
 
-    let price = buildings[buildingIndex].price;
-    let owned = buildings[buildingIndex].owned;
-    buildings[buildingIndex].price = Math.round(price * (1 + owned / 10));
+    console.log(building);
+    this.onUpdateGold.emit(this.gold - building.price);
+    buildings[indexToBuy].owned++;
+
+    let price = buildings[indexToBuy].price;
+    let owned = buildings[indexToBuy].owned;
+    buildings[indexToBuy].price = Math.round(price * (1 + owned / 10));
   }
 
   generateGoldFromBuildings() {
     setInterval(() => {
       let goldToGain = 0;
-      buildings.forEach((building) => {
+      this.buildings.forEach((building) => {
         goldToGain += building.goldPerSecond * building.owned;
       });
       this.onUpdateGold.emit(this.gold + goldToGain);
