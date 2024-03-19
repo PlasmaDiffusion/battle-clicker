@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { Building } from '../building';
 import { BuildingButtonComponent } from '../building-button/building-button.component';
@@ -20,6 +20,6 @@ const buildings: Building[] = [
 export class BuildingListComponent {
 
 
-
+  @Input() gold: number = 0;
    buildings: Building[] = buildings;
 }

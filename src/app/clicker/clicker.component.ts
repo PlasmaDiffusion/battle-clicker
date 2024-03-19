@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-clicker',
@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ClickerComponent {
 
-  public gold : number = 0;
+  @Input() gold : number = 0;
 
   public clickChest()
   {
