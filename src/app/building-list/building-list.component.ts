@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { Building } from '../building';
 import { BuildingButtonComponent } from '../building-button/building-button.component';
+import { CookieService } from 'ngx-cookie-service';
 
 //Hard coded list of buildings here
 const buildings: Building[] = [
@@ -23,10 +24,15 @@ export class BuildingListComponent {
   @Input() gold: number = 0;
   @Output() onUpdateGold = new EventEmitter<number>();
 
-  buildings: Building[] = buildings;
+  buildings: Building[];
 
-  constructor() {
+  constructor(private cookieService: CookieService) {
     this.generateGoldFromBuildings();
+    this.saveBuildings();
+
+    let buildingCookie = cookieService.get('Buildings');
+
+    this.buildings = JSON.parse(buildingCookie) || buildings;
   }
 
   //Buy a building and up the price
@@ -55,5 +61,13 @@ export class BuildingListComponent {
       });
       this.onUpdateGold.emit(this.gold + goldToGain);
     }, 1000);
+  }
+
+  saveBuildings() {
+    setInterval(() => {
+      if (this.cookieService.get('cookiesAccepted')) {
+        this.cookieService.set('Buildings', JSON.stringify(buildings));
+      }
+    }, 6000);
   }
 }

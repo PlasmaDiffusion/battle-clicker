@@ -1,0 +1,11 @@
+<div class="saveBox" *ngIf="!cookiesEnabled">
+  <p>
+    To save this site uses your browser's cookies. Click accept and the game will autosave
+    every minute.
+  </p>
+  <button (click)="accept()">Accept</button>
+</div>
+<!-- TODO: Write "saved" text here.
+<div *ngIf="cookiesEnabled">
+  <button>Save</button>
+</div> -->
