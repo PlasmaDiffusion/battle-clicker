@@ -1,7 +1,25 @@
 .saveBox {
-    border: 6px solid black;
-    position: fixed;
-    margin: auto;
-    padding: 10px;
-    margin-top: 20%;
+  border: 1px solid black;
+  position: fixed;
+  margin: auto;
+  padding: 10px;
+  margin-top: 20%;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

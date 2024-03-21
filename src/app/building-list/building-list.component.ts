@@ -5,7 +5,7 @@ import { BuildingButtonComponent } from '../building-button/building-button.comp
 import { CookieService } from 'ngx-cookie-service';
 
 //Hard coded list of buildings here
-const buildings: Building[] = [
+const baseBuildings: Building[] = [
   { name: 'Warrior', owned: 0, price: 10, goldPerSecond: 1 },
   { name: 'Wizard', owned: 0, price: 100, goldPerSecond: 5 },
   { name: 'Cleric', owned: 0, price: 500, goldPerSecond: 10 },
@@ -30,9 +30,17 @@ export class BuildingListComponent {
     this.generateGoldFromBuildings();
     this.saveBuildings();
 
-    let buildingCookie = cookieService.get('Buildings');
 
-    this.buildings = JSON.parse(buildingCookie) || buildings;
+    this.buildings = baseBuildings;
+
+    let buildingCookie = cookieService.get('Buildings');
+    let loadedBuildings : Building[] = JSON.parse(buildingCookie)
+    if (buildingCookie)
+    {
+      this.buildings = [...loadedBuildings]
+
+    }
+    console.log("*loaded buildings", this.buildings);
   }
 
   //Buy a building and up the price
@@ -44,13 +52,13 @@ export class BuildingListComponent {
       }
     });
 
-    console.log(building);
     this.onUpdateGold.emit(this.gold - building.price);
-    buildings[indexToBuy].owned++;
+    this.buildings[indexToBuy].owned++;
+    console.log(building);
 
-    let price = buildings[indexToBuy].price;
-    let owned = buildings[indexToBuy].owned;
-    buildings[indexToBuy].price = Math.round(price * (1 + owned / 10));
+    let price = this.buildings[indexToBuy].price;
+    let owned = this.buildings[indexToBuy].owned;
+    this.buildings[indexToBuy].price = Math.round(price * (1 + owned / 10));
   }
 
   generateGoldFromBuildings() {
@@ -66,7 +74,7 @@ export class BuildingListComponent {
   saveBuildings() {
     setInterval(() => {
       if (this.cookieService.get('cookiesAccepted')) {
-        this.cookieService.set('Buildings', JSON.stringify(buildings));
+        this.cookieService.set('Buildings', JSON.stringify(this.buildings));
       }
     }, 6000);
   }

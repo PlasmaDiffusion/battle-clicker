@@ -5,7 +5,6 @@
   </p>
   <button (click)="accept()">Accept</button>
 </div>
-<!-- TODO: Write "saved" text here.
-<div *ngIf="cookiesEnabled">
-  <button>Save</button>
-</div> -->
+<div class="saveBox" *ngIf="justSaved">
+  <p>Saved!</p>
+</div>
