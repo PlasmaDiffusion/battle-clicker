@@ -33,7 +33,7 @@ export class AskToUseCookiesComponent {
   }
 
   deleteCookies() {
-    if (this.confirmingDelete == 10) {
+    if (this.confirmingDelete == 9) {
       this.cookieService.delete('cookiesAccepted');
       this.cookieService.delete('gold');
       this.cookieService.delete('buildings');
@@ -41,6 +41,10 @@ export class AskToUseCookiesComponent {
     } else {
       this.confirmingDelete++;
     }
+  }
+
+  cancelDelete() {
+    this.confirmingDelete = 0;
   }
 
   //Other components will autosave every minute, so put feedback of it happening here.

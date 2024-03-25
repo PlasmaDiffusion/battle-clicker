@@ -6,13 +6,14 @@
   <button (click)="accept()">Accept</button>
 </div>
 <div class="saveBox" *ngIf="justSaved">
-  <p>Saved!</p>
+  <p>Auto Saved!</p>
 </div>
 
-<div class="saveBox" *ngIf="cookiesEnabled && confirmingDelete==0">
+<div class="saveBox delete" *ngIf="cookiesEnabled && confirmingDelete==0">
   <button (click)="deleteCookies()">Delete Save</button>
 </div>
 
-<div class="saveBox" *ngIf="cookiesEnabled && confirmingDelete>0">
-  <button (click)="deleteCookies()">Really Delete Save? ({{10-confirmingDelete+1}})</button>
+<div class="saveBox delete" *ngIf="cookiesEnabled && confirmingDelete>0">
+  <button (click)="deleteCookies()">Really Delete Save? ({{9-confirmingDelete+1}})</button>
+  <button (click)="cancelDelete()">Cancel</button>
 </div>
