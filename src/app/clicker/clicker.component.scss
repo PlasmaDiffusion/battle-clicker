@@ -2,7 +2,6 @@ img{
 width: 10%;
 height: 10%;
 transform: scale(1.0,1.0);
-
 }
 
 img:hover {
@@ -11,4 +10,8 @@ img:hover {
 
 img:active {
     transform: scale(1.0,1.0);
+}
+
+.chest {
+    text-align: center;
 }
