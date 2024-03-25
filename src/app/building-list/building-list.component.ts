@@ -1,15 +1,43 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { Building } from '../building';
+import { Building, Elements } from '../building';
 import { BuildingButtonComponent } from '../building-button/building-button.component';
 import { CookieService } from 'ngx-cookie-service';
 
 //Hard coded list of buildings here
 const baseBuildings: Building[] = [
-  { name: 'Warrior', owned: 0, price: 10, goldPerSecond: 1 },
-  { name: 'Wizard', owned: 0, price: 100, goldPerSecond: 5 },
-  { name: 'Cleric', owned: 0, price: 500, goldPerSecond: 10 },
-  { name: 'Thief', owned: 0, price: 2500, goldPerSecond: 50 },
+  {
+    name: 'Warrior',
+    owned: 0,
+    price: 10,
+    goldPerSecond: 1,
+    attackPower: 3,
+    attackElement: Elements.NONE,
+  },
+  {
+    name: 'Wizard',
+    owned: 0,
+    price: 100,
+    goldPerSecond: 2,
+    attackPower: 5,
+    attackElement: Elements.ICE,
+  },
+  {
+    name: 'Cleric',
+    owned: 0,
+    price: 500,
+    goldPerSecond: 3,
+    attackPower: 1,
+    attackElement: Elements.HOLY,
+  },
+  {
+    name: 'Ninja',
+    owned: 0,
+    price: 2500,
+    goldPerSecond: 10,
+    attackPower: 5,
+    attackElement: Elements.POISON,
+  },
 ];
 
 //Stores buildings, renders a list of them, and handles code to buy a building
@@ -30,17 +58,14 @@ export class BuildingListComponent {
     this.generateGoldFromBuildings();
     this.saveBuildings();
 
-
     this.buildings = baseBuildings;
 
     let buildingCookie = cookieService.get('Buildings');
-    let loadedBuildings : Building[] = JSON.parse(buildingCookie)
-    if (buildingCookie)
-    {
-      this.buildings = [...loadedBuildings]
-
+    if (buildingCookie) {
+      let loadedBuildings: Building[] = JSON.parse(buildingCookie);
+      this.buildings = [...loadedBuildings];
     }
-    console.log("*loaded buildings", this.buildings);
+    console.log('*loaded buildings', this.buildings);
   }
 
   //Buy a building and up the price

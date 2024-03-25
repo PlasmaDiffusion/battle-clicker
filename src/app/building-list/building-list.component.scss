@@ -1,0 +1,21 @@
+.buildingContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.shop,
+.partyContainer {
+  border: 1px solid black;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+.partyContainer {
+  width: 240px;
+}
+
+.party {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

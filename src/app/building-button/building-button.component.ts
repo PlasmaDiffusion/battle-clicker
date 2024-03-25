@@ -1,11 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Building } from '../building';
-import { ClickerComponent } from '../clicker/clicker.component';
 
 @Component({
   selector: 'app-building-button',
   standalone: true,
-  imports: [ClickerComponent],
+  imports: [],
   templateUrl: './building-button.component.html',
   styleUrl: './building-button.component.scss',
 })
@@ -15,7 +14,7 @@ export class BuildingButtonComponent {
   @Output() onBuy = new EventEmitter<Building>();
 
   constructor() {
-    this.building = { name: '', price: 0, owned: 0, goldPerSecond: 0 };
+    this.building = { name: '', price: 0, owned: 0, goldPerSecond: 0, attackPower: 0, attackElement: 0 };
     this.gold = 0;
   }
 

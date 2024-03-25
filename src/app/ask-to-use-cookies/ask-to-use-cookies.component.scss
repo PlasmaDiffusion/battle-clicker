@@ -1,10 +1,14 @@
 .saveBox {
-  border: 1px solid black;
+  border: 1px solid aqua;
   position: fixed;
   margin: auto;
   padding: 10px;
-  margin-top: 20%;
   animation: fadeIn 1s;
+  background-color: white;
+  z-index: 1;
+  border-radius: 4px;
+  
+  margin-top: 210px;
 }
 
 @keyframes fadeIn {

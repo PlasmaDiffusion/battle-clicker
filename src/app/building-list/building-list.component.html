@@ -1,8 +1,21 @@
-<p>Hire Adventurers!</p>
-<li *ngFor="let building of buildings; index as i">
-  <app-building-button
-    [building]="building"
-    [gold]="this.gold"
-    (onBuy)="this.buyBuilding(building)"
-  />
-</li>
+<div class="buildingContainer">
+  <div class="partyContainer">
+    <p>Party</p>
+    <div class="party" *ngFor="let building of buildings">
+      <div class="heroRow" *ngFor="let i of [].constructor(building.owned)">
+        <img src="../../assets/images/heroes/{{ building.name }}.png" />
+      </div>
+    </div>
+  </div>
+  <div class="shop">
+    <p>Hire Adventurers!</p>
+    <div *ngFor="let building of buildings">
+      <app-building-button
+        [building]="building"
+        [gold]="this.gold"
+        (onBuy)="this.buyBuilding(building)"
+      />
+    </div>
+  </div>
+
+</div>
