@@ -19,7 +19,7 @@ const baseBuildings: Building[] = [
     owned: 0,
     price: 100,
     goldPerSecond: 1,
-    attackPower: 5,
+    attackPower: 6,
     attackElement: Elements.ICE,
   },
   {
@@ -35,7 +35,7 @@ const baseBuildings: Building[] = [
     owned: 0,
     price: 2500,
     goldPerSecond: 3,
-    attackPower: 5,
+    attackPower: 3,
     attackElement: Elements.POISON,
   },
 ];

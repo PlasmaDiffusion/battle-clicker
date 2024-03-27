@@ -93,17 +93,30 @@ export class EnemyComponent {
   //A specific hero type damages an enemy here
   attackEnemy(attackingHero: Building) {
     if (this.currentEnemy.hp > 0) {
-      this.currentEnemy.hp -=
+      let damage =
         attackingHero.attackPower *
         attackingHero.owned *
         (this.currentEnemy.weakness === attackingHero.attackElement ? 1 : 2);
 
+      damage = this.checkForHolyMultiplier(attackingHero, damage);
+      this.currentEnemy.hp -= damage;
       this.checkToPoison(attackingHero);
     }
   }
 
+  //Clerics are normally weak but can deal 10x the damage against undead enemies
+  checkForHolyMultiplier(attackingHero: Building, damage: number) {
+    if (
+      this.currentEnemy.weakness === Elements.HOLY &&
+      attackingHero.attackElement === Elements.HOLY
+    ) {
+      damage *= 5;
+    }
+    return damage;
+  }
+
+  //Ninjas can poison an enemy dealing 1 damage every second
   checkToPoison(attackingHero: Building) {
-    //Ninjas can poison an enemy dealing 1 damage every second
     if (attackingHero.attackElement === Elements.POISON) {
       //Normal enemies have a 1/6 chance to be poisoned, and those weak against poison have a 1/2 chance.
       const rndInt = Math.floor(Math.random() * 6) + 1;
