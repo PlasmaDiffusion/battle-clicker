@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Building } from '../building';
+import { Building } from '../../building';
 
 @Component({
   selector: 'app-building-button',

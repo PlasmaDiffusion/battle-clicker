@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { Building, Elements } from '../building';
-import { BuildingButtonComponent } from '../building-button/building-button.component';
+import { BuildingButtonComponent } from './building-button/building-button.component';
 import { CookieService } from 'ngx-cookie-service';
 
 //Hard coded list of buildings here

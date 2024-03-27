@@ -4,6 +4,7 @@ import { BuildingListComponent } from '../building-list/building-list.component'
 import { ClickerComponent } from '../clicker/clicker.component';
 import { CookieService } from 'ngx-cookie-service';
 
+//Contains management for gold currency and renders all major game related components
 @Component({
   selector: 'app-game',
   standalone: true,
