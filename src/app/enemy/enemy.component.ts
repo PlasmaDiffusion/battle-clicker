@@ -72,7 +72,22 @@ export class EnemyComponent {
     //Warrior
     setInterval(() => {
       this.attackEnemy(this.heroesInBattle[0]);
-    }, 2000);
+    }, 5000);
+
+    //Wizard
+    setInterval(() => {
+      this.attackEnemy(this.heroesInBattle[1]);
+    }, 8000);
+
+    //Cleric
+    setInterval(() => {
+      this.attackEnemy(this.heroesInBattle[2]);
+    }, 7000);
+
+    //Ninja
+    setInterval(() => {
+      this.attackEnemy(this.heroesInBattle[3]);
+    }, 3000);
   }
 
   //A specific hero type damages an enemy here
@@ -87,20 +102,18 @@ export class EnemyComponent {
     }
   }
 
-  checkToPoison(attackingHero: Building)
-  {
-      //Ninjas can poison an enemy dealing 1 damage every second
-      if (attackingHero.attackElement === Elements.POISON) {
+  checkToPoison(attackingHero: Building) {
+    //Ninjas can poison an enemy dealing 1 damage every second
+    if (attackingHero.attackElement === Elements.POISON) {
+      //Normal enemies have a 1/6 chance to be poisoned, and those weak against poison have a 1/2 chance.
+      const rndInt = Math.floor(Math.random() * 6) + 1;
 
-        //Normal enemies have a 1/6 chance to be poisoned, and those weak against poison have a 1/2 chance.
-        const rndInt = Math.floor(Math.random() * 6) + 1;
-        
-        if (
-          rndInt === 6 ||
-          (this.currentEnemy.weakness === Elements.POISON && rndInt > 3)
-        ) {
-        }
+      if (
+        rndInt === 6 ||
+        (this.currentEnemy.weakness === Elements.POISON && rndInt > 3)
+      ) {
       }
+    }
   }
 
   //Click to claim gold of a defeated monster, then move onto the next enemy
