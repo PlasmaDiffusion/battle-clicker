@@ -1,1 +1,11 @@
-<p>enemy works!</p>
+<img
+  *ngIf="currentEnemy.hp > 0"
+  src="../../assets/images/enemies/{{ currentEnemy.name }}"
+/>
+<img
+  *ngIf="currentEnemy.hp <= 0"
+  (click)="claimGold()"
+  src="../../assets/images/chest.png"
+/>
+<p>HP: {{ currentEnemy.hp }} / {{ currentEnemyMaxHp }}</p>
+<p *ngIf="moneyJustEarned > 0">moneyJustEarned</p>

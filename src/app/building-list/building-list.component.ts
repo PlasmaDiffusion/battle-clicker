@@ -3,6 +3,7 @@ import { NgFor } from '@angular/common';
 import { Building, Elements } from '../building';
 import { BuildingButtonComponent } from './building-button/building-button.component';
 import { CookieService } from 'ngx-cookie-service';
+import { EnemyComponent } from "../enemy/enemy.component";
 
 //Hard coded list of buildings here
 const baseBuildings: Building[] = [
@@ -42,11 +43,11 @@ const baseBuildings: Building[] = [
 
 //Stores buildings, renders a list of them, and handles code to buy a building
 @Component({
-  selector: 'app-building-list',
-  standalone: true,
-  imports: [NgFor, BuildingButtonComponent],
-  templateUrl: './building-list.component.html',
-  styleUrl: './building-list.component.scss',
+    selector: 'app-building-list',
+    standalone: true,
+    templateUrl: './building-list.component.html',
+    styleUrl: './building-list.component.scss',
+    imports: [NgFor, BuildingButtonComponent, EnemyComponent]
 })
 export class BuildingListComponent {
   @Input() gold: number = 0;
