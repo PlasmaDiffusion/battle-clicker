@@ -1,11 +1,27 @@
 <img
   *ngIf="currentEnemy.hp > 0"
-  src="../../assets/images/enemies/{{ currentEnemy.name }}"
+  src="../../assets/images/enemies/{{ currentEnemy.name }}.gif"
 />
 <img
+  class="rewardChest"
   *ngIf="currentEnemy.hp <= 0"
   (click)="claimGold()"
   src="../../assets/images/chest.png"
 />
+
+<p class="goldEarned" *ngIf="moneyJustEarned > 0">
+  +{{ moneyJustEarned }} Gold
+</p>
+
 <p>HP: {{ currentEnemy.hp }} / {{ currentEnemyMaxHp }}</p>
-<p *ngIf="moneyJustEarned > 0">moneyJustEarned</p>
+<br />
+
+<div class="damageIcon" *ngFor="let i of [].constructor(0, 1, 2, 3)">
+  <img
+    [ngStyle]="{ visibility: damageJustDealt[i] > 0 ? 'visible' : 'hidden' }"
+    src="{{ damageIconPaths[i] }}"
+  />
+  <p [ngStyle]="{ visibility: damageJustDealt[i] > 0 ? 'visible' : 'hidden' }">
+    {{ damageJustDealt[i] }}
+  </p>
+</div>

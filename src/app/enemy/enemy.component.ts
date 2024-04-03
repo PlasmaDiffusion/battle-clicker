@@ -3,12 +3,12 @@ import { Enemy } from '../enemy';
 import { Building, Elements } from '../building';
 import { CookieService } from 'ngx-cookie-service';
 import { enemyDatabase } from './enemyDatabase';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-enemy',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgStyle, NgFor],
   templateUrl: './enemy.component.html',
   styleUrl: './enemy.component.scss',
 })
@@ -21,7 +21,9 @@ export class EnemyComponent {
 
   enemyList: Enemy[];
 
-  @Input() heroesInBattle: Building[];
+  @Input({required: true}) heroesInBattle: Building[];
+  damageJustDealt: number[];
+  damageIconPaths: string[];
 
   constructor(private cookieService: CookieService) {
     this.enemyList = [...enemyDatabase];
@@ -33,6 +35,17 @@ export class EnemyComponent {
     this.currentEnemyMaxHp = this.currentEnemy.hp;
     this.heroesInBattle = [];
     this.moneyJustEarned = 0;
+
+    //Damage splash text aka variable to show damage feedback when attacking
+    this.damageJustDealt = [0,0,0,0,0]; //Last element is poison status
+    this.damageIconPaths = [
+      '../../assets/images/icons/Sword.png',
+      '../../assets/images/icons/Icicle.png',
+      '../../assets/images/icons/Holy.png',
+      '../../assets/images/icons/Shuriken.png'
+    ]
+
+    this.attackEnemyEveryFewSeconds();
   }
 
   //Automatically attack based on heroes bought (from buildingList.ts)
@@ -68,7 +81,17 @@ export class EnemyComponent {
 
       damage = this.checkForHolyMultiplier(attackingHero, damage);
       this.currentEnemy.hp -= damage;
+
       this.checkToPoison(attackingHero);
+
+      //Keep hp at 0 when dead
+      this.currentEnemy.hp = Math.max(this.currentEnemy.hp,0);
+
+      //Show feedback
+      this.damageJustDealt[attackingHero.attackElement] = damage;
+      setTimeout(() => {
+        this.damageJustDealt[attackingHero.attackElement] = 0;
+      }, 2000);
     }
   }
 
@@ -99,7 +122,7 @@ export class EnemyComponent {
 
   //Click to claim gold of a defeated monster, then move onto the next enemy
   claimGold() {
-    //todo: increase gold
+    //todo: increase gold from game component
     this.moneyJustEarned = this.currentEnemy.goldDropped;
 
     this.currentEnemyIndex++;

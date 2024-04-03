@@ -1,0 +1,28 @@
+.damageIcon {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  img {
+    width: 16;
+    height: 16;
+  }
+}
+
+.goldEarned {
+  color: gold;
+}
+
+.rewardChest {
+  width: 20%;
+  transform: scale(1, 1);
+  text-align: center;
+  filter: contrast(250%); 
+}
+
+.rewardChest:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.rewardChest:active {
+  transform: scale(1, 1);
+}
