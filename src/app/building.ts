@@ -6,6 +6,8 @@ export interface Building {
     goldPerSecond: number,
     attackPower: number,
     attackElement: Elements;
+
+    description: string;
 }
 
 export enum Elements{

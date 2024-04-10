@@ -2,6 +2,7 @@
   <img
     *ngIf="currentEnemy.hp > 0"
     src="../../assets/images/enemies/{{ currentEnemy.name }}.gif"
+    title="{{currentEnemy.name}}"
   />
 
   <div class="damageFeedbackBox">
@@ -26,7 +27,7 @@
   class="rewardChest"
   *ngIf="currentEnemy.hp <= 0"
   (click)="claimGold()"
-  src="../../assets/images/chest.png"
+  src="../../assets/images/Chest.png"
 />
 
 <p class="goldEarned" *ngIf="moneyJustEarned > 0">
@@ -43,6 +44,7 @@
     </div>
     <img
       src="../../assets/images/icons/Poison.png"
+      title="Poisoned: Extra damage every half a second."
       *ngIf="currentEnemyIsPoisoned"
     />
   </div>

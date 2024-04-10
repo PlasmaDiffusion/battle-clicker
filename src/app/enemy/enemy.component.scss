@@ -13,7 +13,6 @@
 }
 
 .rewardChest {
-  width: 20%;
   transform: scale(1, 1);
   text-align: center;
   filter: contrast(250%);
@@ -32,25 +31,22 @@
   align-items: center;
 
   .damageFeedbackBox {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-rows: [row1-start] 25% [row1-end row2-start] 25% [row2-end];
+    grid-template-columns: 64px [col-start] 64px [col-start];
 
     .damageIcon {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
 
-      gap: 10px;
-      margin-top: 0;
-      margin-bottom: 0;
       img {
         width: 16;
         height: 16;
       }
     }
   }
-
-
 }
 
 .healthSection {

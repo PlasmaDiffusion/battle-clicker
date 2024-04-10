@@ -4,42 +4,8 @@ import { Building, Elements } from '../building';
 import { BuildingButtonComponent } from './building-button/building-button.component';
 import { CookieService } from 'ngx-cookie-service';
 import { EnemyComponent } from "../enemy/enemy.component";
+import { baseBuildings } from './buildingDatabase';
 
-//Hard coded list of buildings here
-const baseBuildings: Building[] = [
-  {
-    name: 'Warrior',
-    owned: 0,
-    price: 10,
-    goldPerSecond: 1,
-    attackPower: 3,
-    attackElement: Elements.NONE,
-  },
-  {
-    name: 'Wizard',
-    owned: 0,
-    price: 100,
-    goldPerSecond: 1,
-    attackPower: 6,
-    attackElement: Elements.ICE,
-  },
-  {
-    name: 'Cleric',
-    owned: 0,
-    price: 500,
-    goldPerSecond: 1,
-    attackPower: 1,
-    attackElement: Elements.HOLY,
-  },
-  {
-    name: 'Ninja',
-    owned: 0,
-    price: 2500,
-    goldPerSecond: 3,
-    attackPower: 3,
-    attackElement: Elements.POISON,
-  },
-];
 
 //Stores buildings, renders a list of them, and handles code to buy a building
 @Component({

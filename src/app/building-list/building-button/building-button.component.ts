@@ -14,7 +14,7 @@ export class BuildingButtonComponent {
   @Output() onBuy = new EventEmitter<Building>();
 
   constructor() {
-    this.building = { name: '', price: 0, owned: 0, goldPerSecond: 0, attackPower: 0, attackElement: 0 };
+    this.building = { name: '', price: 0, owned: 0, goldPerSecond: 0, attackPower: 0, attackElement: 0, description: '' };
     this.gold = 0;
   }
 

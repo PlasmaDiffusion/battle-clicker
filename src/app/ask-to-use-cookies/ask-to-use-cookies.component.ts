@@ -35,8 +35,9 @@ export class AskToUseCookiesComponent {
   deleteCookies() {
     if (this.confirmingDelete == 9) {
       this.cookieService.delete('cookiesAccepted');
-      this.cookieService.delete('gold');
-      this.cookieService.delete('buildings');
+      this.cookieService.delete('Gold');
+      this.cookieService.delete('Buildings');
+      this.cookieService.delete('currentEnemyIndex');
       window.location.reload();
     } else {
       this.confirmingDelete++;

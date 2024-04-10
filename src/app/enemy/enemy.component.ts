@@ -84,10 +84,14 @@ export class EnemyComponent {
   //A specific hero type damages an enemy here
   attackEnemy(attackingHero: Building) {
     if (this.currentEnemy.hp > 0) {
+      if (attackingHero.owned <= 0) {
+        return;
+      }
+
       let damage =
         attackingHero.attackPower *
         attackingHero.owned *
-        (this.currentEnemy.weakness === attackingHero.attackElement ? 1 : 2);
+        (this.currentEnemy.weakness === attackingHero.attackElement ? 2 : 1);
 
       damage = this.checkForHolyMultiplier(attackingHero, damage);
       this.currentEnemy.hp -= damage;

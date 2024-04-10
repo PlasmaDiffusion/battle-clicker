@@ -1,7 +1,7 @@
 import { Elements } from '../building';
 
 export const enemyDatabase = [
-  { name: 'Cockatrice', hp: 100, goldDropped: 50, weakness: Elements.NONE },
+  { name: 'Cockatrice', hp: 100, goldDropped: 50, weakness: Elements.POISON },
   { name: 'Cobra', hp: 150, goldDropped: 100, weakness: Elements.ICE },
   { name: 'Scorpion', hp: 200, goldDropped: 150, weakness: Elements.ICE },
   { name: 'Spider', hp: 300, goldDropped: 200, weakness: Elements.ICE },
