@@ -21,7 +21,7 @@ export class EnemyComponent {
 
   enemyList: Enemy[];
 
-  @Input({required: true}) heroesInBattle: Building[];
+  @Input({ required: true }) heroesInBattle: Building[];
   damageJustDealt: number[];
   damageIconPaths: string[];
 
@@ -37,13 +37,13 @@ export class EnemyComponent {
     this.moneyJustEarned = 0;
 
     //Damage splash text aka variable to show damage feedback when attacking
-    this.damageJustDealt = [0,0,0,0,0]; //Last element is poison status
+    this.damageJustDealt = [0, 0, 0, 0];
     this.damageIconPaths = [
       '../../assets/images/icons/Sword.png',
       '../../assets/images/icons/Icicle.png',
       '../../assets/images/icons/Holy.png',
-      '../../assets/images/icons/Shuriken.png'
-    ]
+      '../../assets/images/icons/Shuriken.png',
+    ];
 
     this.attackEnemyEveryFewSeconds();
   }
@@ -69,6 +69,16 @@ export class EnemyComponent {
     setInterval(() => {
       this.attackEnemy(this.heroesInBattle[3]);
     }, 3000);
+
+    //Poison status
+    setInterval(() => {
+      if (this.currentEnemyIsPoisoned && this.currentEnemy.hp > 0) {
+        this.currentEnemy.hp -= Math.floor(this.currentEnemyMaxHp * 0.005);
+        if (this.currentEnemy.hp < 0) {
+          this.currentEnemy.hp = 0;
+        }
+      }
+    }, 500);
   }
 
   //A specific hero type damages an enemy here
@@ -85,7 +95,7 @@ export class EnemyComponent {
       this.checkToPoison(attackingHero);
 
       //Keep hp at 0 when dead
-      this.currentEnemy.hp = Math.max(this.currentEnemy.hp,0);
+      this.currentEnemy.hp = Math.max(this.currentEnemy.hp, 0);
 
       //Show feedback
       this.damageJustDealt[attackingHero.attackElement] = damage;
@@ -109,13 +119,14 @@ export class EnemyComponent {
   //Ninjas can poison an enemy dealing 1 damage every second
   checkToPoison(attackingHero: Building) {
     if (attackingHero.attackElement === Elements.POISON) {
-      //Normal enemies have a 1/6 chance to be poisoned, and those weak against poison have a 1/2 chance.
-      const rndInt = Math.floor(Math.random() * 6) + 1;
+      //Normal enemies have a 1/10 chance to be poisoned, and those weak against poison have a 1/2 chance.
+      const rndInt = Math.floor(Math.random() * 10) + 1;
 
       if (
-        rndInt === 6 ||
-        (this.currentEnemy.weakness === Elements.POISON && rndInt > 3)
+        rndInt === 10 ||
+        (this.currentEnemy.weakness === Elements.POISON && rndInt > 5)
       ) {
+        this.currentEnemyIsPoisoned = true;
       }
     }
   }
@@ -131,6 +142,15 @@ export class EnemyComponent {
     }
 
     this.currentEnemy = this.enemyList[this.currentEnemyIndex];
+    this.currentEnemyIsPoisoned = false;
+    this.currentEnemyMaxHp = this.currentEnemy.hp;
+
+    if (this.cookieService.get('cookiesAccepted')) {
+      this.cookieService.set(
+        'currentEnemyIndex',
+        this.currentEnemyIndex.toString()
+      );
+    }
 
     setTimeout(() => {
       this.moneyJustEarned = 0;

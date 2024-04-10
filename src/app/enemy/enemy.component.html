@@ -1,7 +1,27 @@
-<img
-  *ngIf="currentEnemy.hp > 0"
-  src="../../assets/images/enemies/{{ currentEnemy.name }}.gif"
-/>
+<div class="enemyBox">
+  <img
+    *ngIf="currentEnemy.hp > 0"
+    src="../../assets/images/enemies/{{ currentEnemy.name }}.gif"
+  />
+
+  <div class="damageFeedbackBox">
+    <div class="damageIcon" *ngFor="let i of [].constructor(0, 1, 2, 3)">
+      <img
+        [ngStyle]="{
+          visibility: damageJustDealt[i] > 0 ? 'visible' : 'hidden'
+        }"
+        src="{{ damageIconPaths[i] }}"
+      />
+      <p
+        [ngStyle]="{
+          visibility: damageJustDealt[i] > 0 ? 'visible' : 'hidden'
+        }"
+      >
+        {{ damageJustDealt[i] }}
+      </p>
+    </div>
+  </div>
+</div>
 <img
   class="rewardChest"
   *ngIf="currentEnemy.hp <= 0"
@@ -13,15 +33,18 @@
   +{{ moneyJustEarned }} Gold
 </p>
 
-<p>HP: {{ currentEnemy.hp }} / {{ currentEnemyMaxHp }}</p>
-<br />
-
-<div class="damageIcon" *ngFor="let i of [].constructor(0, 1, 2, 3)">
-  <img
-    [ngStyle]="{ visibility: damageJustDealt[i] > 0 ? 'visible' : 'hidden' }"
-    src="{{ damageIconPaths[i] }}"
-  />
-  <p [ngStyle]="{ visibility: damageJustDealt[i] > 0 ? 'visible' : 'hidden' }">
-    {{ damageJustDealt[i] }}
-  </p>
+<div class="healthSection">
+  <div class="outerHealthBar">
+    <div
+      class="healthBar"
+      [ngStyle]="{ 'width.%': (currentEnemy.hp / currentEnemyMaxHp) * 100 }"
+    >
+      &nbsp;
+    </div>
+    <img
+      src="../../assets/images/icons/Poison.png"
+      *ngIf="currentEnemyIsPoisoned"
+    />
+  </div>
+  <p>HP: {{ currentEnemy.hp }} / {{ currentEnemyMaxHp }}</p>
 </div>

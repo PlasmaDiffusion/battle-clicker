@@ -4,7 +4,7 @@
   margin: auto;
   padding: 10px;
   animation: fadeIn 1s;
-  background-color: white;
+  background-color: black;
   z-index: 1;
   border-radius: 4px;
 
@@ -32,3 +32,11 @@
     opacity: 0;
   }
 }
+
+button{
+background-color: grey;
+}
+
+button:hover{
+  background-color: lightcoral;
+  }

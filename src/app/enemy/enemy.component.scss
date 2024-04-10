@@ -16,7 +16,7 @@
   width: 20%;
   transform: scale(1, 1);
   text-align: center;
-  filter: contrast(250%); 
+  filter: contrast(250%);
 }
 
 .rewardChest:hover {
@@ -25,4 +25,46 @@
 
 .rewardChest:active {
   transform: scale(1, 1);
+}
+
+.enemyBox {
+  display: flex;
+  align-items: center;
+
+  .damageFeedbackBox {
+    display: flex;
+    flex-direction: column;
+
+    .damageIcon {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      gap: 10px;
+      margin-top: 0;
+      margin-bottom: 0;
+      img {
+        width: 16;
+        height: 16;
+      }
+    }
+  }
+
+
+}
+
+.healthSection {
+  margin: 4px;
+
+  .healthBar {
+    background-color: green;
+  }
+
+  .outerHealthBar {
+    border: 1px solid black;
+  }
+
+  p {
+    margin-top: 0px;
+  }
 }
