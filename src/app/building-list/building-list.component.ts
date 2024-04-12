@@ -3,17 +3,16 @@ import { NgFor } from '@angular/common';
 import { Building, Elements } from '../building';
 import { BuildingButtonComponent } from './building-button/building-button.component';
 import { CookieService } from 'ngx-cookie-service';
-import { EnemyComponent } from "../enemy/enemy.component";
+import { EnemyComponent } from '../enemy/enemy.component';
 import { baseBuildings } from './buildingDatabase';
-
 
 //Stores buildings, renders a list of them, and handles code to buy a building
 @Component({
-    selector: 'app-building-list',
-    standalone: true,
-    templateUrl: './building-list.component.html',
-    styleUrl: './building-list.component.scss',
-    imports: [NgFor, BuildingButtonComponent, EnemyComponent]
+  selector: 'app-building-list',
+  standalone: true,
+  templateUrl: './building-list.component.html',
+  styleUrl: './building-list.component.scss',
+  imports: [NgFor, BuildingButtonComponent, EnemyComponent],
 })
 export class BuildingListComponent {
   @Input() gold: number = 0;
@@ -32,7 +31,6 @@ export class BuildingListComponent {
       let loadedBuildings: Building[] = JSON.parse(buildingCookie);
       this.buildings = [...loadedBuildings];
     }
-    console.log('*loaded buildings', this.buildings);
   }
 
   //Buy a building and up the price
@@ -46,7 +44,6 @@ export class BuildingListComponent {
 
     this.onUpdateGold.emit(this.gold - building.price);
     this.buildings[indexToBuy].owned++;
-    console.log(building);
 
     let price = this.buildings[indexToBuy].price;
     let owned = this.buildings[indexToBuy].owned;
@@ -69,5 +66,9 @@ export class BuildingListComponent {
         this.cookieService.set('Buildings', JSON.stringify(this.buildings));
       }
     }, 6000);
+  }
+
+  claimChest($amount: number) {
+    this.onUpdateGold.emit(this.gold + $amount);
   }
 }

@@ -28,9 +28,7 @@ export class GameComponent {
 
   constructor(private cookieService: CookieService) {
     const goldCookie = cookieService.get('Gold');
-    console.log('goldCookie', goldCookie);
     this.gold = parseInt(goldCookie) || 0;
-    console.log(this.gold);
     this.saveGold();
   }
 

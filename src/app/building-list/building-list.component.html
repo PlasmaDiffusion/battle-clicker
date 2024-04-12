@@ -6,7 +6,7 @@
         <img src="../../assets/images/heroes/{{ building.name }}.png" />
       </div>
     </div>
-    <app-enemy [heroesInBattle]="buildings"/>
+    <app-enemy [heroesInBattle]="buildings" (onClaimChest)="this.claimChest($event)"/>
   </div>
   <div class="shop">
     <p>Hire Adventurers!</p>

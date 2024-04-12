@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Enemy } from '../enemy';
 import { Building, Elements } from '../building';
 import { CookieService } from 'ngx-cookie-service';
@@ -24,6 +24,8 @@ export class EnemyComponent {
   @Input({ required: true }) heroesInBattle: Building[];
   damageJustDealt: number[];
   damageIconPaths: string[];
+  @Output() onClaimChest = new EventEmitter<number>();
+
 
   constructor(private cookieService: CookieService) {
     this.enemyList = [...enemyDatabase];
@@ -137,7 +139,7 @@ export class EnemyComponent {
 
   //Click to claim gold of a defeated monster, then move onto the next enemy
   claimGold() {
-    //todo: increase gold from game component
+    this.onClaimChest.emit(this.currentEnemy.goldDropped);
     this.moneyJustEarned = this.currentEnemy.goldDropped;
 
     this.currentEnemyIndex++;
