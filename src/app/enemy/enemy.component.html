@@ -2,7 +2,7 @@
   <img
     *ngIf="currentEnemy.hp > 0"
     src="../../assets/images/enemies/{{ currentEnemy.name }}.gif"
-    title="{{currentEnemy.name}}"
+    title="{{ currentEnemy.name }}"
   />
 
   <div class="damageFeedbackBox">
@@ -30,10 +30,6 @@
   src="../../assets/images/Chest.png"
 />
 
-<p class="goldEarned" *ngIf="moneyJustEarned > 0">
-  +{{ moneyJustEarned }} Gold
-</p>
-
 <div class="healthSection">
   <div class="outerHealthBar">
     <div
@@ -50,3 +46,7 @@
   </div>
   <p>HP: {{ currentEnemy.hp }} / {{ currentEnemyMaxHp }}</p>
 </div>
+
+<p class="goldEarned" *ngIf="moneyJustEarned > 0">
+  +{{ moneyJustEarned }} Gold
+</p>

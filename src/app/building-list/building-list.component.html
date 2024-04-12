@@ -1,6 +1,6 @@
 <div class="buildingContainer">
   <div class="partyContainer">
-    <p>Party</p>
+    <p>Battle</p>
     <div class="party" *ngFor="let building of buildings">
       <div class="heroRow" *ngFor="let i of [].constructor(building.owned)">
         <img src="../../assets/images/heroes/{{ building.name }}.png" title="{{building.name}} ({{building.owned * building.goldPerSecond}} Gold Per Second)" />
@@ -9,7 +9,7 @@
     <app-enemy [heroesInBattle]="buildings" (onClaimChest)="this.claimChest($event)"/>
   </div>
   <div class="shop">
-    <p>Hire Adventurers!</p>
+    <p>Hire fighters!</p>
     <div *ngFor="let building of buildings">
       <app-building-button
         [building]="building"
