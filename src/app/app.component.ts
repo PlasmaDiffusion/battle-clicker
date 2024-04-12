@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GameComponent } from './game/game.component';
-import { AskToUseCookiesComponent } from './ask-to-use-cookies/ask-to-use-cookies.component';
+import { CookiesComponent } from './cookies/cookies.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GameComponent, AskToUseCookiesComponent, RouterOutlet],
+  imports: [GameComponent, CookiesComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AskToUseCookiesComponent } from './ask-to-use-cookies.component';
+import { CookiesComponent } from './cookies.component';
 
 describe('AskToUseCookiesComponent', () => {
-  let component: AskToUseCookiesComponent;
-  let fixture: ComponentFixture<AskToUseCookiesComponent>;
+  let component: CookiesComponent;
+  let fixture: ComponentFixture<CookiesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AskToUseCookiesComponent]
+      imports: [CookiesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AskToUseCookiesComponent);
+    fixture = TestBed.createComponent(CookiesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

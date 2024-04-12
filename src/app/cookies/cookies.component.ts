@@ -10,10 +10,10 @@ import { CookieService } from 'ngx-cookie-service';
   selector: 'app-ask-to-use-cookies',
   standalone: true,
   imports: [NgIf],
-  templateUrl: './ask-to-use-cookies.component.html',
-  styleUrl: './ask-to-use-cookies.component.scss',
+  templateUrl: './cookies.component.html',
+  styleUrl: './cookies.component.scss',
 })
-export class AskToUseCookiesComponent {
+export class CookiesComponent {
   cookiesEnabled: boolean;
   justSaved: boolean;
   confirmingDelete: number;

@@ -1,5 +1,5 @@
 .saveBox {
-  border: 1px solid aqua;
+  border: 1px solid darkgrey;
   position: fixed;
   margin: auto;
   padding: 10px;
@@ -10,7 +10,6 @@
 
   margin-top: 210px;
 }
-
 
 .delete {
   margin-left: 128px;
@@ -33,10 +32,6 @@
   }
 }
 
-button{
-background-color: grey;
-}
-
-button:hover{
+button:hover {
   background-color: lightcoral;
-  }
+}

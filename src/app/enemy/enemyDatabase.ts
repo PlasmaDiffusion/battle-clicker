@@ -21,20 +21,20 @@ export const enemyDatabase = [
   {
     name: 'Cursed Plant',
     hp: 800,
-    goldDropped: 500,
+    goldDropped: 300,
     weakness: Elements.POISON,
   },
   { name: 'Mummy', hp: 1000, goldDropped: 500, weakness: Elements.HOLY },
   {
     name: 'Dark Knight',
-    hp: 1200,
-    goldDropped: 1000,
+    hp: 8000,
+    goldDropped: 3000,
     weakness: Elements.HOLY,
   },
   {
     name: 'Guardian',
-    hp: 2000,
-    goldDropped: 5000,
+    hp: 20000,
+    goldDropped: 9000,
     weakness: Elements.POISON,
   },
 ];
