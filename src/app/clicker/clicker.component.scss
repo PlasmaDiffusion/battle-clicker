@@ -14,3 +14,10 @@ img:active {
     text-align: center;
     margin-right: 10rem;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .chest {
+    margin-right: 0;
+  }
+}

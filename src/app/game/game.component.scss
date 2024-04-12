@@ -8,3 +8,10 @@
   box-sizing: inherit;
   position: relative;
 }
+
+@media only screen and (max-width: 600px) {
+  .game {
+    display: block;
+    width: 90%;
+  }
+}

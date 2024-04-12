@@ -1,5 +1,4 @@
 main {
-  width: 100%;
   min-height: 100%;
   display: flex;
   justify-content: center;
@@ -8,4 +7,14 @@ main {
   box-sizing: inherit;
   position: relative;
   color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .main {
+    display: block;
+    width: 50%;
+    padding: 4px;
+    margin: auto;
+  }
 }

@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
  * Also lets user delete cookies if they press delete enough times.
  */
 @Component({
-  selector: 'app-ask-to-use-cookies',
+  selector: 'app-cookies',
   standalone: true,
   imports: [NgIf],
   templateUrl: './cookies.component.html',

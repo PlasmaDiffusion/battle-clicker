@@ -1,5 +1,5 @@
 .saveBox {
-  border: 1px solid darkgrey;
+  //border: 1px solid darkgrey;
   position: fixed;
   margin: auto;
   padding: 10px;
@@ -34,4 +34,17 @@
 
 button:hover {
   background-color: lightcoral;
+}
+
+@media only screen and (max-width: 600px) {
+  .saveBox{
+    position: relative;
+    margin-top: 0px;
+
+    text-align: center;
+  }
+  .delete{
+    margin-top: 0px;
+    margin-left: 0;
+  }
 }
