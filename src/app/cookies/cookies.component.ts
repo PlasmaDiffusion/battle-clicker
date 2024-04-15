@@ -51,10 +51,12 @@ export class CookiesComponent {
   //Other components will autosave every minute, so put feedback of it happening here.
   showAutoSaveText() {
     setInterval(async () => {
-      this.justSaved = true;
-      setTimeout(() => {
-        this.justSaved = false;
-      }, 6000);
+      if (this.cookiesEnabled) {
+        this.justSaved = true;
+        setTimeout(() => {
+          this.justSaved = false;
+        }, 6000);
+      }
     }, 60000);
   }
 }

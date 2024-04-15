@@ -2,7 +2,7 @@
 
 A clicker idle game made in Angular using 8 bit rpgs as a baseline. Like a clicker game you click a chest to generate gold and buy "buildings" which generate gold faster. The extra twist is you hire fighters to battle monsters for you, who have their own advantages against certain foes in battle. The game will ask to use your browser's cookies in order to save and load data.
 
-The purpose of the project was to get familiar with Angular and its components, mainly to get a feel of how the framework differs from React. A lot of the game is based around asynchronus setInterval events alongside click events.
+The purpose of the project was to get familiar with Angular and its components, mainly to get a feel of how the framework differs from React. A lot of the game is based around asynchronous setInterval events alongside click events.
 
 
 ---------------------------------------------------------
